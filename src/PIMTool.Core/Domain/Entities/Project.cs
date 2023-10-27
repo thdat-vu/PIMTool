@@ -15,7 +15,8 @@ namespace PIMTool.Core.Domain.Entities
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; } 
         public int[] Version {  get; set; }
-        
+        public Group Group { get; set; }
+        public ICollection <ProjectEmployee> ProjectEmployees { get; set; }
 
     }
 }

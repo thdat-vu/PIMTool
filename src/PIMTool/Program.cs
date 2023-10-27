@@ -2,7 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using PIMTool.Database;
 using PIMTool.Extensions;
 using PIMTool.Middlewares;
-
+//dung co dung vao
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.

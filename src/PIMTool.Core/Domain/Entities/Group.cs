@@ -12,7 +12,8 @@ namespace PIMTool.Core.Domain.Entities
         public int Id { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public int GroupLeaderID { get; set; }
         public int[] Version { get; set; }
-
+        public Employee Employee { get; set; }  
+        public ICollection<Employee> Employees { get; set;}
 
     }
 }

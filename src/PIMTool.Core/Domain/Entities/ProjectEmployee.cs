@@ -12,5 +12,7 @@ namespace PIMTool.Core.Domain.Entities
         public int Id { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public int ProjectID {  get; set; }
         public int EmployeeID { get; set; }
+        public Employee Employee { get; set; }
+        public Project Project { get; set; }
     }
 }
