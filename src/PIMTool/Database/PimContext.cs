@@ -53,8 +53,9 @@ namespace PIMTool.Database
             } 
             );
             modelBuilder.Entity<ProjectEmployee>(entity =>
-            {
+            {   
                 entity.ToTable("PROJECT_EMPLOYEE");
+                entity.Ignore(p => p.Id);
                 entity.Property(p => p.ProjectID).HasColumnName("PROJECT_ID");
                 entity.Property(p => p.EmployeeID).HasColumnName("EMPLOYEE_ID");
                 entity.HasKey(e => new{ e.ProjectID, e.EmployeeID });

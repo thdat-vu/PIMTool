@@ -13,6 +13,6 @@ namespace PIMTool.Core.Domain.Entities
         public int ProjectID {  get; set; }
         public int EmployeeID { get; set; }
         public Employee Employee { get; set; }
-        public Project Project { get; set; }
+        public Project Project { get; set; }    
     }
 }
