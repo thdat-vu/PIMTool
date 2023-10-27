@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PIMTool.Database;
 
@@ -11,9 +12,10 @@ using PIMTool.Database;
 namespace PIMTool.Migrations
 {
     [DbContext(typeof(PimContext))]
-    partial class PimContextModelSnapshot : ModelSnapshot
+    [Migration("20231027103324_InitialDbV2")]
+    partial class InitialDbV2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -36,18 +38,22 @@ namespace PIMTool.Migrations
                         .HasColumnName("BIRTH_DATE");
 
                     b.Property<string>("FirstName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("FIRSTNAME");
 
                     b.Property<string>("LastName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("LASTNAME");
 
                     b.Property<byte[]>("Version")
+                        .IsRequired()
                         .HasColumnType("varbinary(max)")
                         .HasColumnName("VERSION");
 
                     b.Property<string>("Visa")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("VISA");
 
@@ -65,7 +71,7 @@ namespace PIMTool.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int?>("EmployeeId")
+                    b.Property<int>("EmployeeId")
                         .HasColumnType("int");
 
                     b.Property<int>("GroupLeaderID")
@@ -73,6 +79,7 @@ namespace PIMTool.Migrations
                         .HasColumnName("GROUP_LEADER_ID");
 
                     b.Property<byte[]>("Version")
+                        .IsRequired()
                         .HasColumnType("varbinary(max)")
                         .HasColumnName("VERSION");
 
@@ -103,7 +110,8 @@ namespace PIMTool.Migrations
 
                     b.Property<int>("GroupId")
                         .HasMaxLength(255)
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("GROUP_ID");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -124,6 +132,7 @@ namespace PIMTool.Migrations
                         .HasColumnName("STATUS");
 
                     b.Property<byte[]>("Version")
+                        .IsRequired()
                         .HasColumnType("varbinary(max)")
                         .HasColumnName("VERSION");
 
@@ -155,7 +164,9 @@ namespace PIMTool.Migrations
                 {
                     b.HasOne("PIMTool.Core.Domain.Entities.Employee", "Employee")
                         .WithMany()
-                        .HasForeignKey("EmployeeId");
+                        .HasForeignKey("EmployeeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Employee");
                 });

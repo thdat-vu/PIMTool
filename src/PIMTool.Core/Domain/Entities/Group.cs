@@ -9,11 +9,12 @@ namespace PIMTool.Core.Domain.Entities
 {
     public class Group : IEntity
     {
-        public int Id { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public int Id { get ; set ; }
         public int GroupLeaderID { get; set; }
-        public int[] Version { get; set; }
-        public Employee Employee { get; set; }  
-        public ICollection<Employee> Employees { get; set;}
+        public Byte[]? Version { get; set; }
+        //public int[] Version {get; set;}
+        public Employee? Employee { get; set; }  
+        public ICollection<Project>? Projects { get; set;}
 
     }
 }
